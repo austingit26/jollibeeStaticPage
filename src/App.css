@@ -50,17 +50,17 @@
   object-fit: fill;
 }
 
-.categories > h2{
+.categories > h2 {
   color: rgba(255, 255, 255, 0.87);
   font-size: 1.2rem;
   padding-inline: 5px;
 }
 
-nav > h2{
-  color: #E0163D;
+nav > h2 {
+  color: #e0163d;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,7 +71,7 @@ nav{
 nav > input {
   width: 30%;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 1.2rem;
   padding-left: 5px;
   background-color: transparent;
@@ -81,8 +81,8 @@ nav > input:focus {
   outline: none;
 }
 
-.goBack{
-  background-color: #E0163D;
+.goBack {
+  background-color: #e0163d;
   position: fixed;
   bottom: 0;
   width: 200px;
@@ -94,27 +94,25 @@ nav > input:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-span{
+span {
   color: rgba(255, 255, 255, 0.87);
 }
 
-
-
 @media (max-width: 700px) {
-  nav{
+  nav {
     display: block;
     padding: 5px;
   }
-  
-  nav > input{
+
+  nav > input {
     width: 100%;
   }
 
-  .desc{
+  .desc {
     font-size: 1rem;
   }
 
-  .title{
+  .title {
     font-size: 1.1rem;
   }
 }
