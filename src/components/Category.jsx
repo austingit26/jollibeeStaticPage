@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import Card from './Card'
 
 export default function Category(props){
-  console.log(props);
   const [search, setSearch] = useState('');
 
   const toggleMenu = ()=>{
@@ -13,28 +12,33 @@ export default function Category(props){
     setSearch(event.target.value);
   }
 
-  const filteredCategory = props.jollibeeCategories.filter((item) => {
-    return item.category.toLowerCase().includes(search.toLowerCase());
-  });
+  const filteredCategory = useMemo(() => {
+    return props.jollibeeCategories.filter((item) => {
+      return item.category.toLowerCase().includes(search.toLowerCase());
+    });
+  }, [props.jollibeeCategories, search])
 
-  const displayCategories = filteredCategory.map(items=>{
+  const displayCategories = filteredCategory.map((items)=>{
     return (
       <Card 
-      key= {items.id}
-      {...items}
-      isCategory = {props.isCategory}
-      toggleMenu={toggleMenu}
+        key={items.id}
+        {...items}
+        isCategory={props.isCategory}
+        toggleMenu={toggleMenu}
+        handleCategoryClick={props.handleCategoryClick}
       />
     )
   })
 
-    return(
+  return (
     <div>
-        <nav>
-          <h2>Jollibee Categories</h2>
-          <input type="text" placeholder='Search' onChange={handleSearch} value={search} />
-        </nav>
-        <div className="categoryContainer">{filteredCategory.length? displayCategories: <p>Sorry, <b><i>{search}</i></b> not found.</p>}</div>
+      <nav>
+        <h2>Jollibee Categories</h2>
+        <input type="text" placeholder='Search' onChange={handleSearch} value={search} />
+      </nav>
+      <div className="categoryContainer">
+        {filteredCategory.length ? displayCategories : <p>Sorry, <b><i>{search}</i></b> not found.</p>}
+      </div>
     </div>
-    )
+  )
 }

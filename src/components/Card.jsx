@@ -1,14 +1,14 @@
-export default function Card (props){
-    const toggleMenu = ()=>{
-        props.toggleMenu()
+export default function Card ({ category, image, toggleMenu, handleCategoryClick, param }) {
+    const getCategoryOnClick = () => {
+        toggleMenu();
+        handleCategoryClick(param);
     }
-    return(
-        <div className="item" onClick={toggleMenu}>
+    return (
+        <div className="item" onClick={getCategoryOnClick}>
             <div className="categories">
-                <h2>{props.category}</h2>
-                <img src={props.image} alt={props.category} />
+                <h2>{category}</h2>
+                <img src={image} alt={category} />
             </div>
         </div>
-        
     )
 }
