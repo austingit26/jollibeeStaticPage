@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext} from "react";
 import "./App.css";
 import Category from "./components/Category";
 import Menu from "./components/Menu";
 import { getMenu } from "./api";
+
+export const FoodContext = createContext()
 
 function App() {
   const [jollibeeCategories, setJollibeeCategories] = useState([]);
@@ -32,12 +34,9 @@ function App() {
   return (
     <div className="App">
       {isCategory ? (
-        <Category
-          jollibeeCategories={jollibeeCategories}
-          isCategory={isCategory}
-          toggleIsCategory={toggleIsCategory}
-          handleCategoryClick={handleCategoryClick}
-        />
+        <FoodContext.Provider value={{ toggleIsCategory, handleCategoryClick }}>
+          <Category jollibeeCategories={jollibeeCategories}  />
+        </FoodContext.Provider>
       ) : (
         <Menu
           isCategory={isCategory}

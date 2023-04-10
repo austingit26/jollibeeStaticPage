@@ -1,14 +1,13 @@
-export default function Card({
-  category,
-  image,
-  toggleMenu,
-  handleCategoryClick,
-  param,
-}) {
+import { useContext } from "react";
+import { FoodContext } from "../App";
+
+export default function Card({category, image, param}) {
+  const { toggleIsCategory, handleCategoryClick } = useContext(FoodContext);
   const getCategoryOnClick = () => {
-    toggleMenu();
+    toggleIsCategory();
     handleCategoryClick(param);
   };
+
   return (
     <div className="item" onClick={getCategoryOnClick}>
       <div className="categories">

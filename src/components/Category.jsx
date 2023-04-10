@@ -4,10 +4,6 @@ import Card from "./Card";
 export default function Category(props) {
   const [search, setSearch] = useState("");
 
-  const toggleMenu = () => {
-    props.toggleIsCategory();
-  };
-
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
@@ -23,9 +19,6 @@ export default function Category(props) {
       <Card
         key={items.id}
         {...items}
-        isCategory={props.isCategory}
-        toggleMenu={toggleMenu}
-        handleCategoryClick={props.handleCategoryClick}
       />
     );
   });
